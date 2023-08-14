@@ -7,13 +7,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShopManagement", "ShopManag
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Domain", "SM.Domain", "{C4446913-652A-4589-AB14-1337D9CB0530}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Domain", "ShopManagement.Domain\ShopManagement.Domain.csproj", "{052CE594-34D4-4454-8389-BCD30C035E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Domain", "ShopManagement.Domain\ShopManagement.Domain.csproj", "{052CE594-34D4-4454-8389-BCD30C035E03}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "0-Framework", "0-Framework\0-Framework.csproj", "{CCA02C45-D228-4BCE-AD20-64520A4A95D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "0-Framework", "0-Framework\0-Framework.csproj", "{CCA02C45-D228-4BCE-AD20-64520A4A95D3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Application", "SM.Application", "{1BC03290-42F1-4CFC-92CF-8F53D61544F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Application.Contracts", "ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj", "{9059FFAB-8091-47C2-8194-DD44A35B6793}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application.Contracts", "ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj", "{9059FFAB-8091-47C2-8194-DD44A35B6793}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application", "ShopManagement.Application\ShopManagement.Application.csproj", "{350239B0-D050-4377-8F64-6FA024F69EE8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Infrastructure", "{BE51D5CF-CB24-4E8B-8ECC-B461943E459E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructur.EFCore", "ShopManagement.Infrastructur.EFCore\ShopManagement.Infrastructur.EFCore.csproj", "{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +41,18 @@ Global
 		{9059FFAB-8091-47C2-8194-DD44A35B6793}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9059FFAB-8091-47C2-8194-DD44A35B6793}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9059FFAB-8091-47C2-8194-DD44A35B6793}.Release|Any CPU.Build.0 = Release|Any CPU
+		{350239B0-D050-4377-8F64-6FA024F69EE8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{350239B0-D050-4377-8F64-6FA024F69EE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{350239B0-D050-4377-8F64-6FA024F69EE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{350239B0-D050-4377-8F64-6FA024F69EE8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +62,9 @@ Global
 		{052CE594-34D4-4454-8389-BCD30C035E03} = {C4446913-652A-4589-AB14-1337D9CB0530}
 		{1BC03290-42F1-4CFC-92CF-8F53D61544F6} = {8F507B52-C59D-41A7-A507-26D7B37A1403}
 		{9059FFAB-8091-47C2-8194-DD44A35B6793} = {1BC03290-42F1-4CFC-92CF-8F53D61544F6}
+		{350239B0-D050-4377-8F64-6FA024F69EE8} = {1BC03290-42F1-4CFC-92CF-8F53D61544F6}
+		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E} = {BE51D5CF-CB24-4E8B-8ECC-B461943E459E}
+		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB} = {BE51D5CF-CB24-4E8B-8ECC-B461943E459E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {780E24C8-2CB0-455C-8AC5-5D22D12A6B26}
