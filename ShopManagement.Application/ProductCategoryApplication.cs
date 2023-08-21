@@ -1,4 +1,5 @@
 ﻿using _0_Framework.Application;
+using Azure;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 
@@ -14,17 +15,21 @@ namespace ShopManagement.Application
         }
 
 
-        public OperationResult Create(CreateProductCategory command)
+        public OperationResult  Create(CreateProductCategory command)
         {
             var operation = new OperationResult();
-            if (_productCategoryRepository.Exists(x=>x.Name == command.Name))
-                return operation.Failed("امکان ثبت دسته بندی با نام تکراری وجود ندارد لطفا مجددا تلاش بفرمایید");
+            if (_productCategoryRepository.Exists(x => x.Name == command.Name))
+               return operation.Failed("duplicate record");
+           
 
             var slug = command.Slug.Slugify();
+
             var productCategory = new ProductCategory(command.Name, command.Description, command.Picture,
                 command.PictureAlt, command.PictureTitle, command.Keywords, command.MetaDescription, slug);
+
             _productCategoryRepository.Create(productCategory);
             _productCategoryRepository.SaveChanges();
+          
             return operation.Succedded();
         }
 
@@ -48,10 +53,7 @@ namespace ShopManagement.Application
 
             return operation.Succedded();
 
-
             
-
-
         }
 
         public EditProductCategory GetDetails(long id)

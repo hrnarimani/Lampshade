@@ -1,5 +1,5 @@
 ﻿using System.Linq.Expressions;
-using _0_Framework.Infrastraucture;
+using _0_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 

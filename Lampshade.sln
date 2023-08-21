@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Infrastructure", "{BE51D5CF-CB24-4E8B-8ECC-B461943E459E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Infrastructur.EFCore", "ShopManagement.Infrastructur.EFCore\ShopManagement.Infrastructur.EFCore.csproj", "{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Infrastructur.EFCore", "ShopManagement.Infrastructur.EFCore\ShopManagement.Infrastructur.EFCore.csproj", "{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShopManagement.Configuration", "ShopManagement.Configuration\ShopManagement.Configuration.csproj", "{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceHost", "ServiceHost\ServiceHost.csproj", "{D83F11D4-4F4A-4ADD-83FD-27572EDC289E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D83F11D4-4F4A-4ADD-83FD-27572EDC289E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D83F11D4-4F4A-4ADD-83FD-27572EDC289E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D83F11D4-4F4A-4ADD-83FD-27572EDC289E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D83F11D4-4F4A-4ADD-83FD-27572EDC289E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -63,6 +69,7 @@ Global
 		{1BC03290-42F1-4CFC-92CF-8F53D61544F6} = {8F507B52-C59D-41A7-A507-26D7B37A1403}
 		{9059FFAB-8091-47C2-8194-DD44A35B6793} = {1BC03290-42F1-4CFC-92CF-8F53D61544F6}
 		{350239B0-D050-4377-8F64-6FA024F69EE8} = {1BC03290-42F1-4CFC-92CF-8F53D61544F6}
+		{BE51D5CF-CB24-4E8B-8ECC-B461943E459E} = {8F507B52-C59D-41A7-A507-26D7B37A1403}
 		{51780CD4-5CC9-4CDE-8BAF-2E2733FC7F7E} = {BE51D5CF-CB24-4E8B-8ECC-B461943E459E}
 		{50609850-4C7B-47A1-9D34-9B3A92BA1DAB} = {BE51D5CF-CB24-4E8B-8ECC-B461943E459E}
 	EndGlobalSection

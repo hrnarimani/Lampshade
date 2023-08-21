@@ -17,7 +17,7 @@ namespace _0_Framework.Application
 
         }
 
-        public OperationResult Succedded(string message = "عملیات با موفقیت  انجام شد")
+        public OperationResult Succedded(string message = "congratulations")
         {
             IsSuccedded= true;
             Message = message;
