@@ -1,10 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using ShopManagement.Application;
-using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Configuration;
-using ShopManagement.Domain.ProductCategoryAgg;
 using ShopManagement.Infrastructur.EFCore;
-using ShopManagement.Infrastructur.EFCore.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 

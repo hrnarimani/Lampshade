@@ -1,36 +1,23 @@
-﻿@page
-@model ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.CreateModel
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductCategories.EditModel
 @{
 }
 
 
-
 <div class="modal-header">
-    
-    <h4 class="modal-title">ایجاد گروه محصول جدید</h4>
+  
+    <h4 class="modal-title">ویرایش گروه محصول </h4>
 </div>
-@if (Model.SuccessMessageame != null)
-{
-    <div class="alert alert-success">
-        @Model.SuccessMessageame
 
-    </div>
-}
-    @if (Model.ErrorMessageame != null)
-    {
-        <div class="alert alert-danger">
-            @Model.ErrorMessageame
 
-        </div>
-}
-
-<form method="post"  asp-page-handler="Create">
+<form method="post" asp-page-handler="Edit">
     <div class="modal-body">
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="@Model.Command.Name" class="control-label">نام</label>
-                    <input type="text" class="form-control" asp-for="@Model.Command.Name" >
+                    <input type="text" class="form-control" asp-for="@Model.Command.Name">
                     <span asp-validation-for="@Model.Command.Name" class="error"></span>
                 </div>
             </div><div class="col-md-6">
@@ -46,7 +33,7 @@
                 <div class="form-group">
                     <label asp-for="@Model.Command.Picture" class="control-label">عکس</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
-                    <span  class="error"></span>
+                    <span class="error"></span>
                 </div>
             </div>
         </div>
@@ -55,14 +42,14 @@
                 <div class="form-group">
                     <label asp-for="Command.PictureAlt" class="control-label">Alt</label>
                     <input type="text" class="form-control" asp-for="Command.PictureAlt">
-                    <span  class="error"></span>
+                    <span class="error"></span>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label asp-for="@Model.Command.PictureTitle" class="control-label">عنوان</label>
                     <input type="text" class="form-control" asp-for="@Model.Command.PictureTitle">
-                    <span  class="error"></span>
+                    <span class="error"></span>
                 </div>
             </div>
         </div>
@@ -95,11 +82,13 @@
                 </div>
             </div>
         </div>
+        
+
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+
     </div>
     <div class="modal-footer">
         
-        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
     </div>
 </form>
-
-

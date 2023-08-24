@@ -1,20 +1,19 @@
-﻿using System.Linq.Expressions;
-using _0_Framework.Infrastructure;
+﻿using _0_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.ProductCategory;
 using ShopManagement.Domain.ProductCategoryAgg;
 
 namespace ShopManagement.Infrastructur.EFCore.Repository
 {
-    public class ProductCategoryRepository:RepositoryBase<long , ProductCategory> , IProductCategoryRepository
+    public class ProductCategoryRepository : RepositoryBase<long, ProductCategory>, IProductCategoryRepository
     {
         private readonly ShopContext _context;
 
-        public ProductCategoryRepository(ShopContext context) :base(context) 
+        public ProductCategoryRepository(ShopContext context) : base(context)
         {
             _context = context;
         }
 
-       
+
         public EditProductCategory GetDetails(long id)
         {
             return _context.ProductCategories.Select(x => new EditProductCategory()
@@ -25,9 +24,9 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 Keywords = x.Keywords,
                 MetaDescription = x.MetaDescription,
                 Picture = x.Picture,
-                PictureAlt =x.PictureAlt ,
-                PictureTitle = x.PictureTitle ,
-                Slug =x.Slug
+                PictureAlt = x.PictureAlt,
+                PictureTitle = x.PictureTitle,
+                Slug = x.Slug
             }).FirstOrDefault(x => x.Id == id);
         }
 

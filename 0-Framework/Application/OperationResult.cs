@@ -1,39 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _0_Framework.Application
+﻿namespace _0_Framework.Application
 {
-    public  class OperationResult
+    public class  OperationResult
     {
-        public bool IsSuccedded { get; set; }
-        public string Message { get; set; }
+        public static  bool IsSuccedded { get; set; }
+        public static string Message { get; set; }
+
 
         public OperationResult()
         {
             IsSuccedded = false;
 
         }
-
-        public OperationResult Succedded(string message = "congratulations")
+        
+        public bool  Succedded(string message)
         {
-            IsSuccedded= true;
+            IsSuccedded = true;
             Message = message;
-            return this;
+            return IsSuccedded;
 
         }
 
-        public OperationResult Failed (string message)
+        public bool   Failed(string message)
         {
+            Message = message;
             IsSuccedded = false;
-            Message = message;
-            return this;
-
+            return IsSuccedded ;
+            
         }
-
-
-
+        
     }
 }
