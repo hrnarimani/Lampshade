@@ -1,0 +1,82 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductPicture.CreateModel
+@{
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">   ایجاد عکس محصول جدید</h4>
+</div>
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+}
+
+<form method="post"  asp-page-handler="Create">
+    <div class="modal-body">
+      
+        <div class="row">
+            
+          
+            
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Command.ProductId " class="control-label"> محصول </label>
+                    <select class="form-control" asp-for="Command.ProductId" asp-items="Model.Products">
+                        <option value="0">انتخاب محصول</option>
+
+                    </select>
+                    <span asp-validation-for="Command.ProductId " class="error"></span>
+                </div>
+            </div>
+        </div>
+       
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Picture" class="control-label">عکس</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
+                    <span asp-validation-for="@Model.Command.Picture" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.PictureAlt" class="control-label">توضیحات عکس</label>
+                    <input type="text" class="form-control" asp-for="Command.PictureAlt">
+                    <span asp-validation-for="@Model.Command.PictureAlt" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.PictureTitle" class="control-label">  عنوان عکس</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.PictureTitle">
+                    <span asp-validation-for="@Model.Command.PictureTitle" class="error"></span>
+                </div>
+            </div>
+        </div>
+        
+        
+    </div>
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+    </div>
+</form>
+
+

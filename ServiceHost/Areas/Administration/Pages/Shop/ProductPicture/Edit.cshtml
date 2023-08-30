@@ -1,0 +1,68 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Shop.ProductPicture.EditModel
+@{
+}
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">ویرایش عکس  محصول </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Edit">
+    <div class="modal-body">
+         <div class="row">
+            
+          
+            
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="Command.ProductId " class="control-label"> محصول </label>
+                    <select class="form-control" asp-for="Command.ProductId" asp-items="Model.Products">
+                        <option value="0">انتخاب محصول</option>
+
+                    </select>
+                    <span asp-validation-for="Command.ProductId " class="error"></span>
+                </div>
+            </div>
+        </div>
+       
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Picture" class="control-label">عکس</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
+                    <span class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.PictureAlt" class="control-label">توضیحات عکس</label>
+                    <input type="text" class="form-control" asp-for="Command.PictureAlt">
+                    <span class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.PictureTitle" class="control-label">  عنوان عکس</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.PictureTitle">
+                    <span class="error"></span>
+                </div>
+            </div>
+        </div>
+       
+        
+
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+
+    
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
+    </div>
+</form>

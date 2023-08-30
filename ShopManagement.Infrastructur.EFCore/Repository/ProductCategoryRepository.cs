@@ -43,5 +43,15 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 query = query.Where(x => x.Name.Contains(searchModel.Name));
             return query.OrderByDescending(x => x.Id).ToList();
         }
+
+        public List<ProductCategoryViewModel> GetProductCategories()
+        {
+           return  _context.ProductCategories.Select(x => new ProductCategoryViewModel
+            {
+                Id = x.Id,
+                Name = x.Name,
+                
+            }).ToList();
+        }
     }
 }

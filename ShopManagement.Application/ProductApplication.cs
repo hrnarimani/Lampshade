@@ -118,5 +118,10 @@ namespace ShopManagement.Application
             operation.Succedded(ApplicationMessages.SuccessMessage);
             return operation;
         }
+
+        public List<ProductViewModel> GetProducts()
+        {
+            return _productRepository.GetProducts();
+        }
     }
 }

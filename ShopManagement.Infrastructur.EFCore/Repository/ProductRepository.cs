@@ -43,6 +43,16 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
             }).FirstOrDefault(x => x.Id == id);
         }
 
+        public List<ProductViewModel> GetProducts()
+        {
+            return _context.Products.Select(x => new ProductViewModel()
+            {
+                Id = x.Id,
+                Name = x.Name,
+
+            }).ToList();
+        }
+
         public List<ProductViewModel> Search(ProductSearchModel searchModel)
         {
             var query = _context.Products
@@ -55,7 +65,9 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 Picture = x.Picture,
                 UnitPrice = x.UnitPrice,
                 Category = x.Category.Name,
-                CategoryId=x.CategoryId
+                CategoryId=x.CategoryId,
+                IsInStock = x.IsInStock,
+                CreatioDate= x.CreationDate.ToString()
 
                 //bar asase ProductViewModel meghdar dehi shodan
             });

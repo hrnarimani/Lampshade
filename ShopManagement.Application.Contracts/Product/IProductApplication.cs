@@ -14,7 +14,8 @@ namespace ShopManagement.Application.Contracts.Product
         EditProduct GetDetails(long id);
         List<ProductViewModel> Serach (ProductSearchModel searchModel);
         OperationResult IsStock(long id);
-        OperationResult NotInStock(long id);    
+        OperationResult NotInStock(long id);
+        List<ProductViewModel> GetProducts();
 
 
     }

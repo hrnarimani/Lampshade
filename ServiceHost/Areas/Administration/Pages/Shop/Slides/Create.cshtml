@@ -1,0 +1,99 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Shop.Slides.CreateModel
+@{
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">   ایجاد اسلاید جدید</h4>
+</div>
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+}
+
+<form method="post"  asp-page-handler="Create">
+    <div class="modal-body">
+      
+     <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Picture" class="control-label">عکس</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
+                    <span asp-validation-for="@Model.Command.Picture" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.PictureAlt" class="control-label">توضیحات </label>
+                    <input type="text" class="form-control" asp-for="Command.PictureAlt">
+                    <span asp-validation-for="@Model.Command.PictureAlt" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.PictureTitle" class="control-label">  عنوان عکس </label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.PictureTitle">
+                    <span asp-validation-for="@Model.Command.PictureTitle" class="error"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Heading" class="control-label">تیتر </label>
+                    <input type="text" class="form-control" asp-for="Command.Heading">
+                    <span asp-validation-for="@Model.Command.Heading" class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Title" class="control-label">  عنوان </label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Title">
+                    <span asp-validation-for="@Model.Command.Title" class="error"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.Command.Text" class="control-label">  متن </label>
+                        <input type="text" class="form-control" asp-for="@Model.Command.Text">
+                        <span asp-validation-for="@Model.Command.Text" class="error"></span>
+                    </div>
+                </div>
+                
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="@Model.Command.BtnText" class="control-label"> متن دکمه  </label>
+                        <input type="text" class="form-control" asp-for="@Model.Command.BtnText">
+                        <span asp-validation-for="@Model.Command.BtnText" class="error"></span>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+        
+    </div>
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+    </div>
+</form>
+
+
