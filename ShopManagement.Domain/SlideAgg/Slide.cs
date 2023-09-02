@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Runtime.InteropServices.JavaScript;
 using _0_Framework.Domain;
 
 namespace ShopManagement.Domain.SlideAgg
@@ -16,10 +12,11 @@ namespace ShopManagement.Domain.SlideAgg
         public string Title { get; private set; }
         public string Text { get; private set; }
         public string BtnText { get; private set; }
+        public string Link { get; private set; }
         public bool IsRemoved { get; private set; }
 
         public Slide(string picture, string pictureAlt, string pictureTitle, string heading,
-            string title, string text, string btnText)
+            string title, string text,string link ,string btnText)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -28,11 +25,12 @@ namespace ShopManagement.Domain.SlideAgg
             Title = title;
             Text = text;
             BtnText = btnText;
+            Link = link;
             IsRemoved = false;
         }
 
         public void  Edit(string picture, string pictureAlt, string pictureTitle, string heading,
-            string title, string text, string btnText)
+            string title, string text, string link, string btnText)
         {
             Picture = picture;
             PictureAlt = pictureAlt;
@@ -41,6 +39,7 @@ namespace ShopManagement.Domain.SlideAgg
             Title = title;
             Text = text;
             BtnText = btnText;
+            Link = link;
             IsRemoved = false;
         }
 

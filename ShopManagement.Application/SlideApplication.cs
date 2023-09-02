@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _0_Framework.Application;
+﻿using _0_Framework.Application;
 using ShopManagement.Application.Contracts.Slide;
-using ShopManagement.Domain.ProductAgg;
 using ShopManagement.Domain.SlideAgg;
-using static Microsoft.EntityFrameworkCore.DbLoggerCategory.Database;
 
 namespace ShopManagement.Application
 {
@@ -25,7 +18,7 @@ namespace ShopManagement.Application
         {
             var operation = new OperationResult();
             var slide = new Slide(command.Picture, command.PictureAlt, command.PictureTitle, command.Heading,
-                command.Title, command.Text, command.BtnText);
+                command.Title, command.Text,command.Link, command.BtnText);
             _slideRepository.Create(slide);
             _slideRepository.SaveChanges();
 
@@ -44,7 +37,7 @@ namespace ShopManagement.Application
             }
 
             slide.Edit(command.Picture, command.PictureAlt, command.PictureTitle, command.Heading,
-                command.Title, command.Text, command.BtnText);
+                command.Title, command.Text, command.Link, command.BtnText);
             _slideRepository.SaveChanges();
 
             operation.Succedded("عملیات با موفقیت انجام گردید");

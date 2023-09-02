@@ -1,0 +1,22 @@
+﻿using _01_LamphadeQuery.Contracts.ProductCategory;
+using Microsoft.AspNetCore.Mvc;
+using ServiceHost.Pages;
+
+namespace ServiceHost.ViewComponents
+{
+    public class ProductCategoryViewComponent:ViewComponent
+    {
+        private readonly IProductCategoryQuery _productCategoryQuery;
+
+        public ProductCategoryViewComponent(IProductCategoryQuery productCategoryQuery)
+        {
+            _productCategoryQuery = productCategoryQuery;
+        }
+
+        public IViewComponentResult Invoke()
+        {
+            var productcategories = _productCategoryQuery.GetProductCategories();
+            return View(productcategories);
+        }
+    }
+}

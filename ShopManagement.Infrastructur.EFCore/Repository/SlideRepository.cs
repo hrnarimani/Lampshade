@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using _0_Framework.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+﻿using _0_Framework.Infrastructure;
 using ShopManagement.Application.Contracts.Slide;
 using ShopManagement.Domain.SlideAgg;
 
@@ -30,12 +24,13 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 Text = x.Text,
+                Link = x.Link,
                 Title = x.Title,
 
             }).FirstOrDefault(x => x.Id==id);
         }
 
-        public List<SlideViewModel> GetList()
+        public List<SlideViewModel>  GetList()
         {
             return _context.Slides.Select(x => new SlideViewModel
             {
