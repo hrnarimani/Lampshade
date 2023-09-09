@@ -1,6 +1,9 @@
+using DiscountManagement.Configuration;
+using DiscountManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Configuration;
 using ShopManagement.Infrastructur.EFCore;
+using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +15,11 @@ builder.Services.AddRazorPages();
 builder.Services.AddDbContext<ShopContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LampshadeDb") ?? throw new InvalidOperationException("Connection string 'LampshadeDb' not found.")));
 
+builder.Services.AddDbContext<DiscountContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LampshadeDb") ?? throw new InvalidOperationException("Connection string 'LampshadeDb' not found.")));
 
 ShopManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
+DiscountManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 
 
 

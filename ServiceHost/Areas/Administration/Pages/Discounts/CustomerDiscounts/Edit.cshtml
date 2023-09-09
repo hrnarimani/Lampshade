@@ -1,0 +1,77 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Discounts.CustomerDiscounts.EditModel 
+@{
+}
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">ویرایش  تخفیف مشتریان </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Edit">
+    <div class="modal-body">
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.ProductId " class="control-label">انتخاب محصول </label>
+                    <select class="form-control" asp-for="Command.ProductId" asp-items="Model.Products">
+                        <option value="0">انتخاب محصول</option>
+
+                    </select>
+                    <span asp-validation-for="Command.ProductId " class="error"></span>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.DiscountRate  " class="control-label"> درصد تخفیف</label>
+                    <input type="text" class="form-control" asp-for="Command.DiscountRate ">
+                    <span asp-validation-for="Command.DiscountRate " class="error"></span>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.StartDate " class="control-label">تاریخ  شروع تخفیف </label>
+                    <input class="form-control persianDateInput" asp-for="Command.StartDate ">
+                    <span asp-validation-for="Command.StartDate " class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.EndDate " class="control-label">تاریخ پایان تخفیف </label>
+                    <input class="form-control persianDateInput" asp-for="Command.EndDate ">
+                    <span asp-validation-for="Command.EndDate " class="error"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Reason  " class="control-label">دلیل تخفیف </label>
+                    <input type="text" class="form-control" asp-for="Command.Reason ">
+                    <span asp-validation-for="Command.Reason " class="error"></span>
+                </div>
+            </div>
+          
+        </div>
+
+
+    </div>
+       
+        
+
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+
+    
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
+    </div>
+</form>

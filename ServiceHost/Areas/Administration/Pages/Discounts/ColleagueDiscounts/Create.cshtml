@@ -1,0 +1,60 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Discounts.ColleagueDiscounts.CreateModel
+@{
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">ایجاد  تخفیف همکار </h4>
+</div>
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+    }
+
+<form method="post"  asp-page-handler="Create">
+    <div class="modal-body">
+        <div class="row">
+          
+            <div class="form-group">
+                        <label class="sr-only" asp-for="Command.ProductId"></label>
+                        <select class="form-control" asp-for="Command.ProductId" asp-items="Model.Products">
+                            
+                          <option value="0" >انتخاب محصول</option>
+
+                        </select> 
+                <span asp-validation-for="Command.ProductId " class="error"></span>
+            </div>
+			
+			  <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.DiscountRate " class="control-label">میزان تخفیف </label>
+                    <input type="text" class="form-control" asp-for="Command.DiscountRate " >
+                    <span asp-validation-for="Command.DiscountRate " class="error"></span>
+                </div>
+            </div>
+   
+        </div>
+        
+     
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+    </div>
+    </div>
+</form>
+
+

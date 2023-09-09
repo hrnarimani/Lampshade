@@ -1,13 +1,16 @@
 ﻿@page
-@model ServiceHost.Areas.Administration.Pages.Shop.Products.IndexModel
-@{
+@model ServiceHost.Areas.Administration.Pages.Discounts.CustomerDiscounts.IndexModel
 }
+
 
 @{
     Layout = "Shared/_AdminLayout";
-    ViewData["title"] = "مدیریت  محصولات";
+    ViewData["title"] = "مدیریت تخفیف مشتریان";
 
 }
+
+
+
 
 
 @if (@TempData["SuccessMessageameEd"] != null)
@@ -36,9 +39,7 @@
     <div class="col-sm-12">
         <h4 class="page-title pull- left">@ViewData["title"]</h4>
        
-        <p class="pull-right">
-            <h1>ویرایش محصول</h1>
-        </p>
+      
     </div>
 </div>
 
@@ -46,25 +47,25 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">جستجو در  محصولات</h3>
+                <h3 class="panel-title"> جستجو در تخفیف های مشتریان</h3>
             </div>
             <div class="panel-body">
                 <form class="form-inline" role="form" method="get">
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.Name"></label>
-                        <input class="form-control" asp-for="SearchModel.Name" placeholder="نام  محصول">
+                        <label class="sr-only" asp-for="SearchModel.StartDate"></label>
+                        <input class="form-control persianDateInput" asp-for="SearchModel.StartDate" placeholder=" تاریخ شروع">
                     </div>
                     
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.Code"></label>
-                        <input class="form-control" asp-for="SearchModel.Code" placeholder="کد  محصول">
+                        <label class="sr-only" asp-for="SearchModel.EndDate"></label>
+                        <input class="form-control persianDateInput" asp-for="SearchModel.EndDate" placeholder="تاریخ پایان">
                     </div>
                     
                     <div class="form-group">
-                        <label class="sr-only" asp-for="SearchModel.CategoryId"></label>
-                        <select class="form-control" asp-for="SearchModel.CategoryId" asp-items="Model.ProductCategories">
+                        <label class="sr-only" asp-for="SearchModel.ProductId"></label>
+                        <select class="form-control" asp-for="SearchModel.ProductId" asp-items="Model.Products">
                             
-                          <option value="0" > گروه محصول مورد نظر را انتخاب نمایید</option>
+                          <option value="0" >انتخاب محصول</option>
 
                         </select> 
                     </div>
@@ -81,7 +82,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title">لیست  محصولات(@Model.Products.Count)</h3>
+                <h3 class="panel-title">  لیست تخفیف های مشتریان(@Model.CustomerDiscounts.Count)</h3>
             </div>
             <div class="panel-body">
                 <div class="row">
@@ -90,44 +91,30 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>عکس</th>
-                                    <th>نام</th>
-                                    <th>کد</th>
-                                    <th>گروه</th>
-                                    <th>قیمت</th>
-                                    <th>موجودی</th>
+                                    <th>محصول</th>
+                                    <th>درصد تخفیف</th>
+                                    <th>تاریخ شروع تخفیف</th>
+                                    <th>تاریخ پایان تخفیف</th>
+                                    <th>علت تخفیف</th>
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach (var item in Model.Products)
+                                @foreach (var item in Model.CustomerDiscounts)
                                 {
                                     <tr>
                                         <td>@item.Id</td>
-                                        <td>
-                                            <img src="@item.Picture" style="width: 70px; height: 70px" />
-                                        </td>
-                                        <td>@item.Name</td>
-                                        <td>@item.Code</td>
-                                        <td>@item.Category</td>
-                                        <td>@item.UnitPrice</td>
-                                        <td class="text-center">
-
-                                            @if (item.IsInStock)
-                                            {
-                                                <i class="fa fa-check fa-2x text-success"></i>
-                                            }
-                                            else
-                                            {
-                                                <i class="fa fa-remove fa-2x text-danger"></i>
-                                            }
-                                        </td>
-
-                                        <td>@item.CreatioDate</td>
+                                        <td>@item.Product</td>
+                                        <td>@item.DiscountRate </td>
+                                        <td>@item.StartDate</td>
+                                        <td>@item.EndDate</td>
+                                        <td>@item.Reason</td>
+                                        <td>@item.CreationDate</td>
                                         <td>
                                             <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">
-                                                <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id">ویرایش </a> 
+                                                <a class="fa fa-edit" asp-page="./Edit" asp-route-id="@item.Id"> ویرایش </a>
                                             </a>
                                         </td>
                                   

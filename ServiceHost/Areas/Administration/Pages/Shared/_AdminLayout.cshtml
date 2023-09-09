@@ -36,7 +36,7 @@
     <!-- Custom Files -->
     <link href="~/AdminTheme/assets/css/helper.css" rel="stylesheet" type="text/css" />
     <link href="~/AdminTheme/assets/css/style.css" rel="stylesheet" type="text/css" />
-
+    <link href="~/AdminTheme/assets/css/persian-datepicker.min.css" rel="stylesheet"  />
   
 
     <script src="~/AdminTheme/assets/js/modernizr.min.js"></script>
@@ -189,13 +189,24 @@
                         <li class="has_sub">
                             <a class="waves-effect"><i class="md md-mail"></i><span> فروشگاه </span><span class="pull-right"><i class="md md-add"></i></span></a>
                             <ul class="list-unstyled">
-                                <li><a href="Administration/Shop/Slides/Index">اسلایدر</a></li>
-                                <li><a asp-page="Administration/Shop/ProductCategories/Index">گروه محصولات</a></li>
-                                <li><a href="Administration/Shop/Products/Index">محصولات </a></li>
-                                <li><a href="Administration/Shop/ProductPicture/Index">عکس محصولات</a></li>
+                                <li><a asp-page="/Shop/Slides/Index">اسلایدر</a></li>
+                                <li><a asp-page="/Shop/ProductCategories/Index">گروه محصولات</a></li>
+                                <li><a asp-page="/Shop/Products/Index">محصولات </a></li>
+                                <li><a asp-page="/Shop/ProductPicture/Index">عکس محصولات</a></li>
                             </ul>
                         </li>
-                        </ul>
+                        
+                        <li class="has_sub">
+                            <a class="waves-effect"><i class="md md-mail"></i><span> سیستم تخفیفات </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                            <ul class="list-unstyled">
+                               
+                                <li><a asp-page="/Discounts/CustomerDiscounts/Index"> تخفیف مشتری</a></li>
+                                <li><a asp-page="/Discounts/ColleagueDiscounts/Index"> تخفیف همکار</a></li>
+                             
+                            </ul>
+                        </li>
+
+                    </ul>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
@@ -277,11 +288,22 @@
     <script src="~/AdminTheme/assets/js/jquery.chat.js"></script>
 
     <!-- Todo -->
-<script src="~/AdminTheme/assets/js/jquery.todo.js"></script>
+>
 <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
 <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js "></script>
 
+ <script src="~/AdminTheme/assets/js/persian-date.min.js"></script>
+  <script src="~/AdminTheme/assets/js/persian-datepicker.min.js"></script>
+
+
        @RenderSection("Scripts",false)
+	   
+	   <script>
+	   $('.persianDateInput').persianDatepicker({
+         
+          format: 'YYYY/MM/DD',
+          autoClose: true,
+});</script>
 
 <!-- <script type="text/javascript"> -->
     <!-- /* ============================================== -->

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _0_Framework.Application;
 using _0_Framework.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Application.Contracts.Product;
@@ -67,7 +68,7 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 Category = x.Category.Name,
                 CategoryId=x.CategoryId,
                 IsInStock = x.IsInStock,
-                CreatioDate= x.CreationDate.ToString()
+                CreatioDate= x.CreationDate.ToFarsi()
 
                 //bar asase ProductViewModel meghdar dehi shodan
             });

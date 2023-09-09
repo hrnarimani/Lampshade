@@ -19,7 +19,7 @@ namespace ShopManagement.Application
             var operation = new OperationResult();
             if (_productRepository.Exists(x => x.Name == command.Name))
             {
-                operation.Failed(ApplicationMessages.RecordNotFound);
+                operation.Failed(ApplicationMessages.DuplicatedRecord); 
                 return operation;
             }
             else
@@ -40,7 +40,7 @@ namespace ShopManagement.Application
         }
 
         
-            public OperationResult Edit(EditProduct command)
+      public OperationResult Edit(EditProduct command)
         {
             var operation = new OperationResult();
 
