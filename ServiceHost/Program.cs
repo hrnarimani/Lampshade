@@ -6,6 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using ShopManagement.Configuration;
 using ShopManagement.Infrastructur.EFCore;
 using System.Configuration;
+using _0_Framework.Application;
+using ServiceHost;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +30,8 @@ builder.Services.AddDbContext<IventoryContext>(options =>
 ShopManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 DiscountManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 InventoryBootstrapper.Configure(builder.Services, "LampshadeDb");
+
+builder.Services.AddTransient<IFileUploader, FileUploader>();
 
 
 var app = builder.Build();

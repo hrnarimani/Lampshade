@@ -1,0 +1,49 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Inventory.EditModel 
+}
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">ویرایش  انباری </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Edit">
+    <div class="modal-body">
+        <div class="row">
+          
+            <div class="form-group">
+                <label class="sr-only" asp-for="Command.ProductId"></label>
+                <select class="form-control" asp-for="Command.ProductId" asp-items="Model.Products">
+                            
+                    <option value="0" >انتخاب محصول</option>
+
+                </select> 
+                <span asp-validation-for="Command.ProductId " class="error"></span>
+            </div>
+			
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.UnitPrice " class="control-label">قیمت  </label>
+                    <input type="text" class="form-control" asp-for="Command.UnitPrice ">
+                    <span asp-validation-for="Command.UnitPrice " class="error"></span>
+                </div>
+            </div>
+   
+        </div>
+
+  
+    </div>
+       
+        
+
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+
+    
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
+    </div>
+</form>

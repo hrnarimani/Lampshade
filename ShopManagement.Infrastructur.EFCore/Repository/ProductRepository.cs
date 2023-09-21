@@ -39,7 +39,7 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 ShortDescription = x.ShortDescription,
-                UnitPrice = x.UnitPrice
+              
                 //bar asase khoroji yani editproduct meghdar dehi shodan
             }).FirstOrDefault(x => x.Id == id);
         }
@@ -64,10 +64,8 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
                 Name = x.Name,
                 Code = x.Code,
                 Picture = x.Picture,
-                UnitPrice = x.UnitPrice,
                 Category = x.Category.Name,
                 CategoryId=x.CategoryId,
-                IsInStock = x.IsInStock,
                 CreatioDate= x.CreationDate.ToFarsi()
 
                 //bar asase ProductViewModel meghdar dehi shodan

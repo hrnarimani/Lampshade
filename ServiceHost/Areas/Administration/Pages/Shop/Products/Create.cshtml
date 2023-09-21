@@ -47,15 +47,8 @@
         
         <div class="row">
             
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Command.UnitPrice " class="control-label">قیمت </label>
-                    <input  class="form-control" asp-for="Command.UnitPrice " >
-                    <span asp-validation-for="Command.UnitPrice " class="error"></span>
-                </div>
-            </div>
-            
-            <div class="col-md-6">
+           
+            <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Command.CategoryId " class="control-label">گروه محصول </label>
                     <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ProductCategories">

@@ -129,7 +129,12 @@ namespace InventoryManagement.Application
 
         public List<InventoryViewMOdel> Seearch(InventorySearchModel searchModel)
         {
-            throw new NotImplementedException();
+            return _inventoryRepository.Seearch(searchModel);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long iventoryId)
+        {
+            return _inventoryRepository.GetOperationLog(iventoryId);
         }
     }
 }

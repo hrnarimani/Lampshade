@@ -94,8 +94,8 @@
                                     <th>نام</th>
                                     <th>کد</th>
                                     <th>گروه</th>
-                                    <th>قیمت</th>
-                                    <th>موجودی</th>
+                                   
+                                   
                                     <th>تاریخ تولید</th>
                                     <th>عملیات</th>
                                 </tr>
@@ -111,19 +111,7 @@
                                         <td>@item.Name</td>
                                         <td>@item.Code</td>
                                         <td>@item.Category</td>
-                                        <td>@item.UnitPrice</td>
-                                        <td class="text-center">
-
-                                            @if (item.IsInStock)
-                                            {
-                                                <i class="fa fa-check fa-2x text-success"></i>
-                                            }
-                                            else
-                                            {
-                                                <i class="fa fa-remove fa-2x text-danger"></i>
-                                            }
-                                        </td>
-
+                                        
                                         <td>@item.CreatioDate</td>
                                         <td>
                                             <a class="btn btn-warning btn-custome waves-effect waves-light pull-right m-rl-5">

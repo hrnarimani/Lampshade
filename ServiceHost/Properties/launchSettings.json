@@ -20,9 +20,9 @@
     "https": {
       "commandName": "Project",
       "dotnetRunMessages": true,
-      "launchBrowser": false,
+      "launchBrowser": true,
       "applicationUrl": "https://localhost:7244;http://localhost:5036",
-    // "launchUrl": "Administration/Shop/Slides/Index",
+      "launchUrl": "https://localhost:7244",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

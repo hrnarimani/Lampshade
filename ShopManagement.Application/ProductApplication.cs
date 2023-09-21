@@ -26,7 +26,7 @@ namespace ShopManagement.Application
             {
                 var slug = command.Slug.Slugify();
 
-                var product = new Product(command.Name, command.Code, command.UnitPrice, command.ShortDescription,
+                var product = new Product(command.Name, command.Code, command.ShortDescription,
                     command.Description,
                     command.Picture, command.PictureAlt, command.PictureTitle,
                     command.CategoryId, command.KeyWords, command.MetaDescription, slug);
@@ -60,7 +60,7 @@ namespace ShopManagement.Application
             }
 
             var slug = command.Slug.Slugify();
-            product.Edit(command.Name, command.Code, command.UnitPrice, command.ShortDescription,
+            product.Edit(command.Name, command.Code, command.ShortDescription,
                 command.Description,
                 command.Picture, command.PictureAlt, command.PictureTitle,
                 command.CategoryId, command.KeyWords, command.MetaDescription, slug);
@@ -81,43 +81,7 @@ namespace ShopManagement.Application
             return _productRepository.Search(searchModel);
         }
 
-        public OperationResult IsStock(long id)
-        {
-            var operation = new OperationResult();
-
-            var product = _productRepository.Get(id);
-
-            if (product == null)
-            {
-                operation.Failed(ApplicationMessages.RecordNotFound);
-                return operation;
-            }
-
-            product.InStock();
-            _productRepository.SaveChanges();
-
-            operation.Succedded(ApplicationMessages.SuccessMessage);
-            return operation;
-        }
-
-        public OperationResult NotInStock(long id)
-        {
-            var operation = new OperationResult();
-
-            var product = _productRepository.Get(id);
-
-            if (product == null)
-            {
-                operation.Failed(ApplicationMessages.RecordNotFound);
-                return operation;
-            }
-
-            product.NotInStock();
-            _productRepository.SaveChanges();
-
-            operation.Succedded(ApplicationMessages.SuccessMessage);
-            return operation;
-        }
+       
 
         public List<ProductViewModel> GetProducts()
         {

@@ -1,0 +1,49 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Inventory.ReduceModel 
+}
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">کاهش موجودی  انباری </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Reduce">
+    <div class="modal-body">
+        <div class="row">
+          
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Count  " class="control-label">تعداد  </label>
+                    <input type="text" class="form-control" asp-for="Command.Count ">
+                    <span asp-validation-for="Command.Count " class="error"></span>
+                </div>
+            </div>
+        </div>
+			
+        <div class="row">
+        <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Command.Description " class="control-label">توضیحات  </label>
+                    <textarea rows="3" class="form-control" asp-for="Command.Description "></textarea>  
+                    <span asp-validation-for="Command.Description " class="error"></span>
+                </div>
+            </div>
+   
+        </div>
+
+  
+    </div>
+
+
+
+    <input type="hidden" asp-for="Command.InventoryId" value="Command.InventoryId " />
+
+    
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">کاهش موجودی</button>
+    </div>
+</form>
