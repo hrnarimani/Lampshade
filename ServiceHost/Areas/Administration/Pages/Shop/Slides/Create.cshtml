@@ -25,14 +25,14 @@
         </div>
 }
 
-<form method="post"  asp-page-handler="Create">
+<form method="post" asp-page-handler="Create" enctype="multipart/form-data">
     <div class="modal-body">
       
      <div class="row">
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="@Model.Command.Picture" class="control-label">عکس</label>
-                    <input type="text" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
+                    <input type="file" class="form-control" asp-for="@Model.Command.Picture" accept="image/*">
                     <span asp-validation-for="@Model.Command.Picture" class="error"></span>
                 </div>
             </div>

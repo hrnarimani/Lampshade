@@ -7,6 +7,8 @@ using ShopManagement.Configuration;
 using ShopManagement.Infrastructur.EFCore;
 using System.Configuration;
 using _0_Framework.Application;
+using BlogManagement.Infrastructure.Configuration;
+using BlogManagement.Infrastructure.EFCore;
 using ServiceHost;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -27,9 +29,15 @@ builder.Services.AddDbContext<IventoryContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("LampshadeDb") ?? throw new InvalidOperationException("Connection string 'LampshadeDb' not found.")));
 
 
+builder.Services.AddDbContext<BlogContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("LampshadeDb") ?? throw new InvalidOperationException("Connection string 'LampshadeDb' not found.")));
+
+
 ShopManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 DiscountManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 InventoryBootstrapper.Configure(builder.Services, "LampshadeDb");
+BlogManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
+
 
 builder.Services.AddTransient<IFileUploader, FileUploader>();
 

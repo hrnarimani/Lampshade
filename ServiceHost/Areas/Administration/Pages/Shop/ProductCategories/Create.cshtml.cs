@@ -28,22 +28,27 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 
         }
 
-        public  void  OnPostCreate(CreateProductCategory command)
+        public void OnPostCreate(CreateProductCategory command)
 
         {
+            if (ModelState.IsValid)
+            {
+                _productCategoryApplication.Create(command);
 
-            
-            _productCategoryApplication.Create(command);
 
 
+                if (OperationResult.IsSuccedded)
 
-            if (OperationResult.IsSuccedded)
+                    SuccessMessageame = OperationResult.Message;
 
-                SuccessMessageame = OperationResult.Message;
+                else
+
+                    ErrorMessageame = OperationResult.Message;
+            }
 
             else
+                ErrorMessageame = "لطفا مقادیر خواسته شده را به درستی پر نمایید";
 
-                ErrorMessageame = OperationResult.Message;
 
 
 

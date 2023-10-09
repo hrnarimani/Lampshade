@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
+using Microsoft.AspNetCore.Http;
 
 namespace ShopManagement.Application.Contracts.Product
 {
@@ -23,7 +24,10 @@ namespace ShopManagement.Application.Contracts.Product
         public string ShortDescription { get;  set; }
 
         public string Description { get;  set; }
-        public string Picture { get;  set; }
+
+        [MaxFileSize(3 * 1024 * 1024, ErrorMessage = ValidationMessages.MaxFileSize)]
+        [FileExtentionLimitation(new string[] { ".jpg", ".png", ".jpeg" }, ErrorMessage = ValidationMessages.InvalidFileFormat)]
+        public IFormFile Picture { get; set; }
         public string PictureAlt { get;  set; }
         public string PictureTitle { get;  set; }
 

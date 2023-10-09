@@ -28,7 +28,7 @@ namespace ShopManagement.Infrastructur.EFCore.Repository
             {
                 Id = x.Id,
              
-                Picture = x.Picture,
+                
                 PictureAlt = x.PictureAlt,
                 PictureTitle = x.PictureTitle,
                 ProductId = x.ProductId

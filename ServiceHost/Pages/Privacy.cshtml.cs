@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+using ShopManagement.Application.Contracts.Comment;
 
 namespace ServiceHost.Pages
 {
@@ -11,8 +12,11 @@ namespace ServiceHost.Pages
             _logger = logger;
         }
 
+
         public void OnGet()
         {
         }
+
+       
     }
 }

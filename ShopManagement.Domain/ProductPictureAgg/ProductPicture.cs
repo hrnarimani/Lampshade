@@ -33,7 +33,9 @@ namespace ShopManagement.Domain.ProductPictureAgg
 
         public void Edit(string picture, string pictureAlt, string pictureTitle, long productId)
         {
-            Picture = picture;
+            if (!string.IsNullOrEmpty(picture))
+                Picture = picture;
+
             PictureAlt = pictureAlt;
             PictureTitle = pictureTitle;
             ProductId = productId;

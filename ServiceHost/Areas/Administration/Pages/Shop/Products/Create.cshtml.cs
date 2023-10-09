@@ -35,20 +35,24 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
         public  void  OnPostCreate(CreateProduct command)
 
         {
+            if (ModelState.IsValid)
+            {
 
-            
-            _productApplication.Create(command);
+                _productApplication.Create(command);
 
 
 
-            if (OperationResult.IsSuccedded)
+                if (OperationResult.IsSuccedded)
 
-                SuccessMessageame = OperationResult.Message;
+                    SuccessMessageame = OperationResult.Message;
+
+                else
+
+                    ErrorMessageame = OperationResult.Message;
+            }
 
             else
-
-                ErrorMessageame = OperationResult.Message;
-
+                ErrorMessageame = "لطفا مقادیر خواسته شده را به درستی پر نمایید";
 
 
         }
