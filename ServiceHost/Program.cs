@@ -10,6 +10,8 @@ using _0_Framework.Application;
 using BlogManagement.Infrastructure.Configuration;
 using BlogManagement.Infrastructure.EFCore;
 using ServiceHost;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -37,6 +39,8 @@ ShopManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 DiscountManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
 InventoryBootstrapper.Configure(builder.Services, "LampshadeDb");
 BlogManagementBootstrapper.Configure(builder.Services, "LampshadeDb");
+
+builder.Services.AddSingleton(HtmlEncoder.Create(UnicodeRanges.BasicLatin, UnicodeRanges.Arabic));//SEO
 
 
 builder.Services.AddTransient<IFileUploader, FileUploader>();
