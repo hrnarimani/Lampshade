@@ -7,12 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Areas\Administration\Pages\Accounts\Account\ChangePassword.cshtml" />
     <Content Remove="Pages\Article.cshtml" />
     <Content Remove="Pages\Product.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\AccountManagement.Infrastructure.Configuration\AccountManagement.Infrastructure.Configuration.csproj" />
     <ProjectReference Include="..\BlogManagement.Infrastructure\BlogManagement.Infrastructure.Configuration.csproj" />
+    <ProjectReference Include="..\CommentManagement.Configuration\CommentManagement.Configuration.csproj" />
+    <ProjectReference Include="..\CommentManagementApplication.Contracts\CommentManagementApplication.Contracts.csproj" />
     <ProjectReference Include="..\DiscountManagement.Configuration\DiscountManagement.Configuration.csproj" />
     <ProjectReference Include="..\InventoryManagement.Infrasructure.EFCore\InventoryManagement.Infrasructure.EFCore.csproj" />
     <ProjectReference Include="..\InventoryManagement.Infrastructure.Configuration\InventoryManagement.Infrastructure.Configuration.csproj" />
@@ -34,11 +38,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <_ContentIncludedByDefault Remove="Areas\Administration\Pages\Accounts\Account\ChangePassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\Account.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Article.cshtml" />
     <_ContentIncludedByDefault Remove="Pages\Product.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Administration\Pages\Accounts\Account\ChangePassword.cshtml" />
     <None Include="Pages\Article.cshtml" />
     <None Include="Pages\Product.cshtml" />
     <None Include="Pages\Shared\Components\Footer\Default.cshtml" />
@@ -47,6 +54,14 @@
 
   <ItemGroup>
     <UpToDateCheckInput Remove="Pages\Article.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Areas\Administration\Pages\Accounts\Account\ChangePassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Account.cshtml" />
   </ItemGroup>
 
 </Project>

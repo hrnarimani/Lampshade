@@ -1,0 +1,54 @@
+﻿@page
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Accounts.Role.CreateModel 
+@{
+}
+
+
+
+<div class="modal-header">
+    
+    <h4 class="modal-title">ایجاد  نقش جدید</h4>
+</div>
+@if (Model.SuccessMessageame != null)
+{
+    <div class="alert alert-success">
+        @Model.SuccessMessageame
+
+    </div>
+}
+    @if (Model.ErrorMessageame != null)
+    {
+        <div class="alert alert-danger">
+            @Model.ErrorMessageame
+
+        </div>
+    }
+
+<form method="post" asp-page-handler="Create"  >
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Name " class="control-label">نام</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Name" >
+                    <span asp-validation-for="@Model.Command.Name" class="error"></span>
+                </div>
+            </div>
+          
+   
+       
+        </div>
+        
+    
+               
+            
+          
+    </div>
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light" >ایجاد</button>
+    </div>
+</form>
+
+

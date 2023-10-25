@@ -5,19 +5,25 @@ using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
 using _01_LamphadeQuery.Contracts.Article;
+using _01_LamphadeQuery.Contracts.Product;
 using BlogManagement.Infrastructure.EFCore;
+using CommentManagement.Infrastructure.EF.Core;
 using Microsoft.EntityFrameworkCore;
 
 namespace _01_LamphadeQuery.Query
 {
     public  class ArticleQuery :IArticleQuery
     {
-        private readonly BlogContext _context;
-
-        public ArticleQuery(BlogContext context)
+        public ArticleQuery(BlogContext context, CommentContext commentContext)
         {
             _context = context;
+            _commentContext = commentContext;
         }
+
+        private readonly BlogContext _context;
+        private readonly CommentContext _commentContext;
+
+       
 
         public List<ArticleQueryModel> LatestArticles()
         {
@@ -61,6 +67,27 @@ namespace _01_LamphadeQuery.Query
 
             if (!string.IsNullOrWhiteSpace(article.Keywords))
                 article.KeywordList = article.Keywords.Split(",").ToList();
+
+            var comments = _commentContext.Comments
+                .Where(x => !x.IsCanceled)
+                .Where(x => x.IsConfirmed)
+                .Where(x => x.Type == CommentTypes.ArticleS)
+                .Where(x => x.OwnerRecordId == article.Id)
+                .Select(x => new CommentQueryModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Message = x.Message,
+                    CreationDate = x.CreationDate.ToFarsi(),
+                    ParentId = x.ParentId,
+                }).OrderByDescending(x => x.Id).ToList();
+
+            foreach (var comment in comments)
+            {
+                if (comment.ParentId > 0)
+                    comment.ParentName = comments.FirstOrDefault(x => x.Id == comment.ParentId)?.Name;
+                article.Comments = comments;
+            }
             return article;
         }
     }

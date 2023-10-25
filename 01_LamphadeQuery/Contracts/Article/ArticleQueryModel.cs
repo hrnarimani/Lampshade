@@ -25,6 +25,7 @@ namespace _01_LamphadeQuery.Contracts.Article
         public long CategoryId { get; set; }
         public string CategoryName { get; set; }
         public string CategorySlug { get; set; }
-        
+        public List<CommentQueryModel> Comments { get; set; }
+
     }
 }

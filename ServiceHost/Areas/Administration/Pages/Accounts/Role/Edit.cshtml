@@ -1,0 +1,49 @@
+﻿@page 
+@using Microsoft.EntityFrameworkCore
+@model ServiceHost.Areas.Administration.Pages.Accounts.Role.EditModel
+{
+@{
+}
+
+
+<div class="modal-header">
+  
+    <h4 class="modal-title">ویرایش  نقش </h4>
+</div>
+
+
+<form method="post" asp-page-handler="Edit">
+
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="@Model.Command.Name " class="control-label">نام</label>
+                    <input type="text" class="form-control" asp-for="@Model.Command.Name">
+                    <span asp-validation-for="@Model.Command.Name" class="error"></span>
+                </div>
+            </div>
+          
+
+            
+        </div>
+
+    
+
+
+
+    
+ 
+        
+
+        <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id " />
+
+    </div>
+
+    <div class="modal-footer">
+        
+        <button type="submit" class="btn btn-info waves-effect waves-light">ویرایش</button>
+    </div>
+
+    
+</form>
