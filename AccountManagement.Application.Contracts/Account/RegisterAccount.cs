@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace AccountManagement.Application.Contracts.Account
 {
-    public  class CreateAccount
+    public  class RegisterAccount
     {
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string Fullname { get; set; }

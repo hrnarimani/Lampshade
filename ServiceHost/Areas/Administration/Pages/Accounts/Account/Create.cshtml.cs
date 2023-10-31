@@ -20,7 +20,7 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
 
 
         public SelectList Roles;
-        public CreateAccount Command { get; set; }
+        public RegisterAccount Command { get; set; }
 
         private readonly IAccountApplication _accountApplication ;
         private readonly IRoleAplication _roleAplication;
@@ -36,12 +36,12 @@ namespace ServiceHost.Areas.Administration.Pages.Accounts.Account
             Roles = new SelectList(_roleAplication.List(), "Id", "Name");
         }
 
-        public  void  OnPostCreate(CreateAccount command)
+        public  void  OnPostCreate(RegisterAccount command)
 
         {
 
 
-                _accountApplication.Create(command);
+                _accountApplication.Register(command);
 
 
 

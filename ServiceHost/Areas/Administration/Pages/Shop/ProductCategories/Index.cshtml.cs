@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductCategory;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
+    [Authorize(Roles = "1 , 3")]//admin && content uploader
+    
     public class IndexModel : PageModel
     {
         public ProductCategorySearchModel SearchModel;

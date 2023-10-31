@@ -1,10 +1,14 @@
 ﻿using System.Security.Claims;
+using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 
 namespace _0_Framework.Application
-{
+  {
+    
+    
     public class AuthHelper : IAuthHelper
     {
         private readonly IHttpContextAccessor _contextAccessor;
@@ -52,6 +56,15 @@ namespace _0_Framework.Application
                 authProperties);
         }
 
-        
+        public string CurrentAccountRole()
+        {
+            if(IsAuthenticated())
+            
+                return _contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == ClaimTypes.Role).Value;
+
+            return null;
+            
+            
+        }
     }
 }

@@ -17,6 +17,9 @@ using AccountManagement.Infrastructure.EFCore;
 using CommentManagement.Configuration;
 using CommentManagement.Infrastructure.EF.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using _0_Framework.Infrastructure;
+using System.Collections.Generic;
+using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -77,6 +80,30 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         o.LogoutPath = new PathString("/Account");
         o.AccessDeniedPath = new PathString("/AccessDenied");
     });
+
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminArea",
+        builder => builder.RequireRole(new List<string> { RolesConst.Administrator, RolesConst.ContetntUploader }));
+
+    options.AddPolicy("Shop",
+    builder => builder.RequireRole(new List<string> { RolesConst.Administrator }));
+        
+
+});
+
+
+builder.Services.AddRazorPages()
+.AddRazorPagesOptions(options =>
+{
+    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+
+});
+
+
+
 
 
 var app = builder.Build();

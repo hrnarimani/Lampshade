@@ -10,7 +10,8 @@ namespace _0_Framework.Application
     {
         void Signin(AuthViewModel account);
         void Signout ();
-        bool IsAuthenticated ();    
+        bool IsAuthenticated ();
+        string CurrentAccountRole();
 
     }
 }
