@@ -1,5 +1,7 @@
 using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
+using InventoryManagement.Infrastructure.Configuration.Permission;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
@@ -34,6 +36,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
               invt = id;
         }
 
+        [NeedsPermission(InventoryPermission.Increase)]
         public IActionResult  OnPostIncrease(IncreaseInventory command)
         {
             command.InventoryId = invt;

@@ -1,14 +1,18 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "پروژه دوره MVC";
 }
 
+@await Component.InvokeAsync("Slide")
 
-@await Component.InvokeAsync( "Slide")
-@await Component.InvokeAsync( "ProductCategory")
-@await Component.InvokeAsync( "ProductCategoryWithProduct")
-@await Component.InvokeAsync( "LatestArrivals")
+@await Component.InvokeAsync("ProductCategory")
+
+@await Component.InvokeAsync("ProductCategoryWithProduct")
+
+@await Component.InvokeAsync("LatestArrivals")
+
+
 
 <!--====================  End of single row slider tab  ====================-->
 <!--====================  single row slider ====================-->

@@ -22,6 +22,7 @@
     <ProjectReference Include="..\ShopManagement.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
     <ProjectReference Include="..\ShopManagement.Application\ShopManagement.Application.csproj" />
     <ProjectReference Include="..\ShopManagement.Infrastructur.EFCore\ShopManagement.Infrastructur.EFCore.csproj" />
+    <ProjectReference Include="..\ShopManagement.Infrastructur.InventoryACl\ShopManagement.Infrastructur.InventoryACl.csproj" />
   </ItemGroup>
 
 </Project>

@@ -51,9 +51,10 @@
             <div class="col-md-12">
                 <div class="form-group">
                     <label asp-for="Command.CategoryId " class="control-label">گروه محصول </label>
-                    <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ProductCategories">
+                    <select class="form-control" asp-for="Command.CategoryId" asp-items="Model.ProductCategories"> 
                         <option value="0">انتخاب دسته بندی</option>
-
+                        @*ProductCategories name selectlist va CategoryId meghdary hast ke mikhahim etelaate
+                        an namayesh dadashavad ya etelaat daron an rikhte shavad*@
                     </select>
                     <span asp-validation-for="Command.CategoryId " class="error"></span>
                 </div>

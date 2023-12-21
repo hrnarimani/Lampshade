@@ -1,10 +1,9 @@
 ﻿using _01_LamphadeQuery.Contracts.Product;
-
 using Microsoft.AspNetCore.Mvc;
 
 namespace ServiceHost.ViewComponents
 {
-    public class LatestArrivalsViewComponent:ViewComponent
+    public class LatestArrivalsViewComponent : ViewComponent
     {
         private readonly IProductQuery _productQuery;
 
@@ -13,9 +12,9 @@ namespace ServiceHost.ViewComponents
             _productQuery = productQuery;
         }
 
-        IViewComponentResult Invoke()
+        public IViewComponentResult Invoke()
         {
-            var products = _productQuery.GetLatestArrivals ();
+            var products = _productQuery.GetLatestArrivals();
             return View(products);
         }
     }

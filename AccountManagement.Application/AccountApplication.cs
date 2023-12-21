@@ -20,13 +20,14 @@ namespace AccountManagement.Application
         private readonly IAccountRepository _accountRepository;
         private readonly IPasswordHasher _passwordHasher;
         private readonly IAuthHelper _authHelper;
-
-        public AccountApplication(IFileUploader fileUploader, IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper)
+        private readonly IRoleRepository _roleRepository;
+        public AccountApplication(IFileUploader fileUploader, IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper, IRoleRepository roleRepository)
         {
             _fileUploader = fileUploader;
             _accountRepository = accountRepository;
             _passwordHasher = passwordHasher;
             _authHelper = authHelper;
+            _roleRepository = roleRepository;
         }
 
         public OperationResult Edit(EditAccount command)
@@ -115,6 +116,7 @@ namespace AccountManagement.Application
         {
             var operation = new OperationResult();
             var account = _accountRepository.GetBy(command.Username);
+            var permissions = _roleRepository.Get(account.RoleId).Permissions.Select(x => x.Code).ToList();
 
             if (account == null) 
             {
@@ -130,7 +132,7 @@ namespace AccountManagement.Application
                 return operation;
             }
 
-            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname,  account.UserName);
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname,  account.UserName,permissions);
            
                
             
@@ -143,6 +145,11 @@ namespace AccountManagement.Application
         public void Logout()
         {
             _authHelper.Signout();
+        }
+
+        public List<AccountViewModel> GetAccounts()
+        {
+            return _accountRepository.GetAccounts();
         }
     }
 }

@@ -15,7 +15,7 @@ namespace InventoryManagement.Infrasructure.EFCore.Mapping
         {
             builder.ToTable("Inventory");
             builder.HasKey(x => x.Id);
-            builder.OwnsMany(x => x.Operations, ModelBuilder =>
+            builder.OwnsMany(x => x.Operations /*//Inventory.Operation*/ , ModelBuilder =>
             {
                 ModelBuilder.HasKey(x => x.Id);
                 ModelBuilder.ToTable("InventoryOperations");

@@ -19,6 +19,7 @@ using CommentManagement.Infrastructure.EF.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using _0_Framework.Infrastructure;
 using System.Collections.Generic;
+using _0_Framework.Application.ZarinPal;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -66,6 +67,8 @@ builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
 builder.Services.AddTransient<IAuthHelper, AuthHelper>();
 
+builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
+
 
 builder.Services.Configure<CookiePolicyOptions>(options =>
 {
@@ -89,16 +92,25 @@ builder.Services.AddAuthorization(options =>
 
     options.AddPolicy("Shop",
     builder => builder.RequireRole(new List<string> { RolesConst.Administrator }));
-        
+
+    options.AddPolicy("Discount",
+   builder => builder.RequireRole(new List<string> { RolesConst.Administrator }));
+
+    options.AddPolicy("Account",
+   builder => builder.RequireRole(new List<string> { RolesConst.Administrator }));
+
 
 });
 
 
 builder.Services.AddRazorPages()
+    .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
 .AddRazorPagesOptions(options =>
 {
     options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
     options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
+    options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
 
 });
 

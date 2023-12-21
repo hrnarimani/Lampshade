@@ -12,6 +12,9 @@ namespace _0_Framework.Application
         void Signout ();
         bool IsAuthenticated ();
         string CurrentAccountRole();
+        AuthViewModel CurrentAccountInfo();
+        long CurrentAccountId();
+        List<int> GetPrimissions();
 
     }
 }

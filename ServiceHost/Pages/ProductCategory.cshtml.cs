@@ -1,5 +1,4 @@
 using _01_LamphadeQuery.Contracts.ProductCategory;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ServiceHost.Pages
@@ -7,7 +6,6 @@ namespace ServiceHost.Pages
     public class ProductCategoryModel : PageModel
     {
         public ProductCategoryQueryModel ProductCategory;
-
         private readonly IProductCategoryQuery _productCategoryQuery;
 
         public ProductCategoryModel(IProductCategoryQuery productCategoryQuery)

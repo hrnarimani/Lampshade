@@ -5,6 +5,7 @@ using CommentManagement.Infrastructure.EF.Core;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrasructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Infrastructur.EFCore;
 using ShopManagement.Domain.ProductPictureAgg;
 
@@ -51,6 +52,7 @@ namespace _01_LamphadeQuery.Query
                 Description = x.Description,
                 Code = x.Code,
                 Keywords = x.KeyWords,
+                
                
                 Pictures = MapProductPictures(x.ProductPictures),
                 MetaDescription = x.MetaDescription,
@@ -67,6 +69,7 @@ namespace _01_LamphadeQuery.Query
                 {
                     var price = productInventory.UnitPrice;
                     product.Price = price.ToMoney();
+                    product.DoublePrice = price;
 
                     var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
                     if (discount != null)
@@ -221,7 +224,19 @@ namespace _01_LamphadeQuery.Query
             return products;
         }
 
-     
+       
+        public List<CartItem> CheckInventoryStatus(List<CartItem> cartItems)
+        {
+            var inventory = _iventoryContext.Inventory.ToList();
 
+            foreach (var cartItem in cartItems.Where(cartItem =>
+                         inventory.Any(x => x.ProductId == cartItem.Id && x.InStock)))
+            {
+                var itemInventory = inventory.Find(x => x.ProductId == cartItem.Id);
+                cartItem.InStock = itemInventory.CalculateCurrentCount() >= cartItem.Count;
+            }
+
+            return cartItems;
+        }
     }
 }

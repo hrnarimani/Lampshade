@@ -1,9 +1,7 @@
 ﻿using _01_LamphadeQuery;
 using _01_LamphadeQuery.Contracts.ArticleCategory;
-using _01_LamphadeQuery.Contracts.ArticleCategory;
 using _01_LamphadeQuery.Contracts.ProductCategory;
 using Microsoft.AspNetCore.Mvc;
-using System.Runtime.CompilerServices;
 
 namespace ServiceHost.ViewComponents
 {

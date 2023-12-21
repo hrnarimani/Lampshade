@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ShopManagement.Application.Contracts.Order;
 
 namespace _01_LamphadeQuery.Contracts.Product
 {
@@ -12,5 +13,6 @@ namespace _01_LamphadeQuery.Contracts.Product
         ProductQueryModel GetProductDetails(string slug);
         List<ProductQueryModel> GetLatestArrivals();
         List<ProductQueryModel> Search(string value);
+        List<CartItem> CheckInventoryStatus (List<CartItem> cartItems);
     }
 }

@@ -1,7 +1,9 @@
 using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.ColleagueDiscount;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using InventoryManagement.Application.Contract.Inventory;
+using InventoryManagement.Infrastructure.Configuration.Permission;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -42,6 +44,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             Products = new SelectList(_productApplication.GetProducts(), "Id", "Name");
         }
 
+        [NeedsPermission(InventoryPermission.EditInventory)]
         public IActionResult  OnPostEdit(EditInventory command)
         {
             _inventoryApplication.Edit(command);

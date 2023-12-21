@@ -1,11 +1,13 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Application.Contracts.ProductCategory;
+using ShopManagement.Configuration.Permission;
 
-namespace ServiceHost.Areas.Administration.Pages.Shop.Products 
+namespace ServiceHost.Areas.Administration.Pages.Shop.Products
 {
     public class CreateModel : PageModel
     {
@@ -32,6 +34,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Products
             ProductCategories = new SelectList(_productCategoryApplication.GetProductCategories(), "Id", "Name");
         }
 
+        [NeedsPermission(ShopPermission.CreateProduct)]
         public  void  OnPostCreate(CreateProduct command)
 
         {

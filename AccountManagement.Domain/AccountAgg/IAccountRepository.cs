@@ -13,5 +13,7 @@ namespace AccountManagement.Domain.AccountAgg
         EditAccount Getdetails(long id);
         List<AccountViewModel> Serach(AccountSearchModel searchModel);
         Account GetBy(string username);
+        List<AccountViewModel> GetAccounts();
+
     }
 }

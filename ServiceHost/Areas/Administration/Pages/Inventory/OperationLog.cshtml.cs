@@ -1,6 +1,8 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using DiscountManagement.Application.Contract.ColleagueDiscount;
 using InventoryManagement.Application.Contract.Inventory;
+using InventoryManagement.Infrastructure.Configuration.Permission;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -31,7 +33,7 @@ namespace ServiceHost.Areas.Administration.Pages.Inventory
             _inventoryApplication = inventoryApplication;
         }
 
-
+        [NeedsPermission(InventoryPermission.OperationLog)]
         public void OnGet(long id)
         {
             Command = _inventoryApplication.GetOperationLog(id);

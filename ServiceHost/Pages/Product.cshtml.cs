@@ -28,22 +28,22 @@ namespace ServiceHost.Pages
             _commentApplication = commentApplication;
         }
 
-       
+
 
         public void OnGet(string id)
         {
-            Product = _productQuery.GetProductDetails( id);
+            Product = _productQuery.GetProductDetails(id);
         }
-        
+
         public IActionResult OnPost(AddComment command, string productSlug)
         {
             command.Type = CommentTypes.Product;
-            var result= _commentApplication.Add(command);
+            var result = _commentApplication.Add(command);
 
             return RedirectToPage("/Product", new { Id = productSlug });
         }
 
-       
-        
+
+
     }
 }

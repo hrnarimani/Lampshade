@@ -1,7 +1,9 @@
 ﻿using _0_Framework.Application;
+using _0_Framework.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductCategory;
+using ShopManagement.Configuration.Permission;
 
 namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
 {
@@ -28,6 +30,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.ProductCategories
             Command = _productCategoryApplication.GetDetails(id);
         }
 
+        [NeedsPermission(ShopPermission.EditProductCategory )]
         public IActionResult  OnPostEdit(EditProductCategory command)
         {
             _productCategoryApplication.Edit(command);
