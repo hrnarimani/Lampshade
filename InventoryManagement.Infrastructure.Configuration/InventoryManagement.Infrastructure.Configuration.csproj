@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\01_LamphadeQuery\01_LamphadeQuery.csproj" />
     <ProjectReference Include="..\InventoryManagement.Application\InventoryManagement.Application.csproj" />
     <ProjectReference Include="..\InventoryManagement.Infrasructure.EFCore\InventoryManagement.Infrasructure.EFCore.csproj" />
   </ItemGroup>

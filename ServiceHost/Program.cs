@@ -20,7 +20,9 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using _0_Framework.Infrastructure;
 using System.Collections.Generic;
 using _0_Framework.Application.ZarinPal;
+using InventoryManagementPresentation.Api;
 using Microsoft.Extensions.Options;
+using ShopManagementPresentation.Api;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -105,14 +107,19 @@ builder.Services.AddAuthorization(options =>
 
 builder.Services.AddRazorPages()
     .AddMvcOptions(options => options.Filters.Add<SecurityPageFilter>())
-.AddRazorPagesOptions(options =>
-{
-    options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
-    options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
-    options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
-    options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
+    .AddRazorPagesOptions(options =>
+    {
+        options.Conventions.AuthorizeAreaFolder("Administration", "/", "AdminArea");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Shop", "Shop");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Discounts", "Discount");
+        options.Conventions.AuthorizeAreaFolder("Administration", "/Accounts", "Account");
 
-});
+    })
+
+    .AddApplicationPart(typeof(ProductController).Assembly)
+    .AddApplicationPart(typeof(InventoryController).Assembly)
+    .AddNewtonsoftJson();
+    
 
 
 
@@ -152,6 +159,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapRazorPages();
+app.MapControllers();
 
 app.Run();
 

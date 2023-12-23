@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _01_LamphadeQuery.Contracts.Inventory;
+using _01_LamphadeQuery.Query;
 using InventoryManagement.Infrastructure.Configuration.Permission;
 
 namespace InventoryManagement.Infrastructure.Configuration
@@ -23,6 +25,7 @@ namespace InventoryManagement.Infrastructure.Configuration
             services.AddTransient<IInventoryRepository, IventoryRepository>();
 
             services.AddTransient<IPermissionExposer, InventoryPermissionExposer>();
+            services.AddTransient<IInventoryQuery , InventoryQuery>();
 
 
             services.AddDbContext<IventoryContext>(x => x.UseSqlServer(connectionString));
