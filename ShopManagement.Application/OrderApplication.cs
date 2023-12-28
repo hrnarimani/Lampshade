@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
+using _0_Framework.Sender.Sms;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic.CompilerServices;
 using ShopManagement.Application.Contracts.Order;
@@ -12,21 +13,26 @@ using ShopManagement.Domain.Services;
 
 namespace ShopManagement.Application
 {
-    public class OrderApplication :IOrderApplication
+    public class OrderApplication : IOrderApplication
     {
-        public OrderApplication(IOrderRepository orderRepository, IAuthHelper authHelper, IConfiguration configuration, IShopInventoryAcl shopInventoryAcl)
+        public OrderApplication(IAuthHelper authHelper, IConfiguration configuration, IOrderRepository orderRepository, IShopInventoryAcl shopInventoryAcl, ISmsSender smsSender, IShopAccountAcl shopAccountAcl)
         {
-            _orderRepository = orderRepository;
             _authHelper = authHelper;
             _configuration = configuration;
+            _orderRepository = orderRepository;
             _shopInventoryAcl = shopInventoryAcl;
+            _smsSender = smsSender;
+            _shopAccountAcl = shopAccountAcl;
         }
 
-
-        private readonly IOrderRepository _orderRepository;
         private readonly IAuthHelper _authHelper;
         private readonly IConfiguration _configuration;
+        private readonly IOrderRepository _orderRepository;
         private readonly IShopInventoryAcl _shopInventoryAcl;
+        private readonly ISmsSender _smsSender;
+        private readonly IShopAccountAcl _shopAccountAcl;
+
+       
 
 
         public long PlaceOrder(Cart cart)
@@ -67,6 +73,9 @@ namespace ShopManagement.Application
                 return "";
 
             _orderRepository.SaveChanges();
+
+            var (name, mobile) = _shopAccountAcl.GetAccountBy(order.AccountId);
+            _smsSender.SendByKavenagarAsync( $"{name} گرامی سفارش شما به شماره {issueTrackingNo} ثبت و در زمان معین شده  ارسال خواهد شد." , mobile);
             return issueTrackingNo;
         }
 
@@ -75,14 +84,15 @@ namespace ShopManagement.Application
             return _orderRepository.GetAmountBy(id);
         }
 
-        public List<OrderViewModel> Serach(OrderSearchModel searchModel)
-        {
-            return _orderRepository.Serach(searchModel);
-        }
-
+       
         public List<OrderItemViewModel> GetItems(long orderId)
         {
             return _orderRepository.GetItems(orderId);
+        }
+
+        public List<OrderViewModel> Search(OrderSearchModel searchModel)
+        {
+            return _orderRepository.Serach(searchModel);
         }
     }
 }

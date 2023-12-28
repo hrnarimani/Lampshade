@@ -16,8 +16,8 @@ namespace AccountManagement.Application.Contracts.Account
         List<AccountViewModel> Serach(AccountSearchModel searchModel);
         OperationResult Login(Login command);
         void Logout();
-
         List<AccountViewModel> GetAccounts();
+        AccountViewModel GetAccountBy(long id);
 
     }
 }

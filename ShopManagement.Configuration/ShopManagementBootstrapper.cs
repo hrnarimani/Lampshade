@@ -22,6 +22,7 @@ using ShopManagement.Domain.SlideAgg;
 using ShopManagement.Infrastructur.EFCore;
 using ShopManagement.Infrastructur.EFCore.Repository;
 using ShopManagement.Infrastructur.InventoryACl;
+using ShopManagement.Infrastructure.AccountAcl;
 
 namespace ShopManagement.Configuration
 {
@@ -58,7 +59,11 @@ namespace ShopManagement.Configuration
 
             services.AddSingleton<ICartService , CartService>();
 
+            services.AddTransient<IShopAccountAcl, ShopAccountAcl>();
+
             
+
+
 
 
 

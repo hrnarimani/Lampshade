@@ -1,20 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ShopManagement.Application.Contracts.Order
 {
-    public interface  IOrderApplication
+    public interface IOrderApplication
     {
         long PlaceOrder(Cart cart);
-        void Cancel(long id);
-        string PaymentSucceded(long orderId , long refId);
         double GetAmountBy(long id);
-        List<OrderViewModel> Serach(OrderSearchModel searchModel);
-
+        void Cancel(long id);
+        string PaymentSucceded(long orderId, long refId);
         List<OrderItemViewModel> GetItems(long orderId);
-
+        List<OrderViewModel> Search(OrderSearchModel searchModel);
     }
 }

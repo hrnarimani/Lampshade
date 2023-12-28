@@ -132,7 +132,7 @@ namespace AccountManagement.Application
                 return operation;
             }
 
-            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname,  account.UserName,permissions);
+            var authViewModel = new AuthViewModel(account.Id, account.RoleId, account.Fullname,  account.UserName,account.Mobile,permissions);
            
                
             
@@ -150,6 +150,17 @@ namespace AccountManagement.Application
         public List<AccountViewModel> GetAccounts()
         {
             return _accountRepository.GetAccounts();
+        }
+
+        public AccountViewModel GetAccountBy(long id)
+        {
+            var account = _accountRepository.Get(id);
+            return new AccountViewModel()
+            {
+                Fullname = account.Fullname,
+                Mobile = account.Mobile
+
+            };
         }
     }
 }

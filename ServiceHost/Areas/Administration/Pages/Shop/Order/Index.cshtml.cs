@@ -37,7 +37,7 @@ namespace ServiceHost.Areas.Administration.Pages.Shop.Order
         public void OnGet(OrderSearchModel searchModel)
         {
             Accounts = new SelectList(_accountApplication.GetAccounts(), "Id", "Fullname");
-            Orders = _orderApplication.Serach(searchModel);
+            Orders = _orderApplication.Search(searchModel);
         }
 
         public IActionResult OnGetConfirm(long id)
