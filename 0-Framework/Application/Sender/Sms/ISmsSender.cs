@@ -1,4 +1,4 @@
-﻿namespace _0_Framework.Sender.Sms
+﻿namespace _0_Framework.Application.Sender.Sms
 {
     public interface ISmsSender
     {

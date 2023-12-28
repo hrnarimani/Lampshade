@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
-using _0_Framework.Sender.Sms;
+using _0_Framework.Application.Sender.Sms;
 using Microsoft.Extensions.Configuration;
 using Microsoft.VisualBasic.CompilerServices;
 using ShopManagement.Application.Contracts.Order;

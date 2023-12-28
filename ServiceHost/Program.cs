@@ -19,9 +19,8 @@ using CommentManagement.Infrastructure.EF.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using _0_Framework.Infrastructure;
 using System.Collections.Generic;
-
+using _0_Framework.Application.Sender.Sms;
 using _0_Framework.Application.ZarinPal;
-using _0_Framework.Sender.Sms;
 using InventoryManagementPresentation.Api;
 using Microsoft.Extensions.Options;
 using ShopManagementPresentation.Api;

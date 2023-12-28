@@ -1,8 +1,7 @@
 ﻿using Kavenegar;
 using Microsoft.Extensions.Configuration;
-using SmsIrRestful;
 
-namespace _0_Framework.Sender.Sms
+namespace _0_Framework.Application.Sender.Sms
 {
     public class SmsSender : ISmsSender
     {
