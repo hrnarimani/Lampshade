@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.JavaScript;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Domain;
@@ -16,9 +17,11 @@ namespace AccountManagement.Domain.AccountAgg
         public string Mobile { get; private set; }
         public long RoleId { get; private set; }
         public string ProfilePhoto { get; private set; }
+        public string CodeValidateMobile { get; private set; }
+        public bool IsActive { get; private set; }
         public Role Role { get; private set; }
 
-        public Account(string fullname, string userName, string password, string mobile, long roleId, string profilePhoto)
+        public Account(string fullname, string userName, string password, string mobile, long roleId, string profilePhoto, string codeValidateMobile)
         {
             Fullname = fullname;
             UserName = userName;
@@ -31,6 +34,9 @@ namespace AccountManagement.Domain.AccountAgg
             }
            
             ProfilePhoto = profilePhoto;
+            CodeValidateMobile = codeValidateMobile;
+            IsActive = false;
+
         }
 
         public void Edit(string fullname, string userName,  string mobile, long roleId,
@@ -47,6 +53,16 @@ namespace AccountManagement.Domain.AccountAgg
         public void ChangePassword(string password)
         {
             Password = password;
+        }
+
+        public void ChangeCodeValidateMobile(string code)
+        {
+            CodeValidateMobile = code;
+        }
+
+        public void ChangeActiveMode ()
+        {
+            IsActive = true;
         }
 
     }

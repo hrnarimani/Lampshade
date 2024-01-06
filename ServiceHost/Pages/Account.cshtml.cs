@@ -33,7 +33,7 @@ namespace ServiceHost.Pages
                 return RedirectToPage("./Index");
 
             LoginMessage = OperationResult.Message;
-            return RedirectToPage("./Index");
+            return Page();
         }
 
         public IActionResult OnGetLogout()
@@ -47,14 +47,16 @@ namespace ServiceHost.Pages
         {
 
             _accountApplication.Register(command);
+
+
             if (OperationResult.IsSuccedded)
 
-                return RedirectToPage("/Account");
+                return RedirectToPage("/ActiveUser");
 
 
               RegisterMessage = OperationResult.Message;
 
-            return RedirectToPage("/Account");
+            return Page();
         }
     }
 }

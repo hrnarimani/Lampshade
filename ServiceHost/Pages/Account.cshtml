@@ -4,6 +4,15 @@
     ViewData["Title"] = "ورود و ثبت نام";
 }
 
+@if (@TempData["SuccessfuleMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessfuleMessage"]
+
+    </div>
+}
+
+
 <div class="breadcrumb-area section-space--half">
     <div class="container wide">
         <div class="row">
@@ -31,13 +40,17 @@
                         <div class="row">
                             <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6">
                               
-                                @if (@TempData["LoginMessage"] != null)
+                                @if (Model.LoginMessage != null)
                                        {
                                           <div class="alert alert-danger">
-                                        @TempData["LoginMessage"]
+                                        @Model.LoginMessage
 
                                           </div>
                                        }
+                                
+                               
+                               
+                            
  
                                 <form methode="post" asp-page-handler="Login">
                                     <div class="login-form">
@@ -75,13 +88,16 @@
                             </div>
                             <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
                                 
-                                @if (@TempData["RegisterMessage"] != null)
+                                @if (Model.RegisterMessage != null)
                                 {
                                     <div class="alert alert-danger">
-                                        @TempData["RegisterMessage"]
+                                        @Model.RegisterMessage
 
                                     </div>
                                 }
+
+
+                               
                                 <form methode="post" asp-page-handler="Register">
 
                                     <div class="login-form">

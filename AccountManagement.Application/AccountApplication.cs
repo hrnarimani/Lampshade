@@ -1,34 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using _0_Framework.Application;
+using _0_Framework.Application.Sender.Sms;
 using AccountManagement.Application.Contracts.Account;
 using AccountManagement.Domain.AccountAgg;
 using AccountManagement.Domain.RoleAgg;
+using AccountManagement.Infrastructure.EFCore;
 using Azure;
 
 namespace AccountManagement.Application
 {
     public  class AccountApplication:IAccountApplication
     {
-       
-
-        private readonly IFileUploader _fileUploader;
-        private readonly IAccountRepository _accountRepository;
-        private readonly IPasswordHasher _passwordHasher;
-        private readonly IAuthHelper _authHelper;
-        private readonly IRoleRepository _roleRepository;
-        public AccountApplication(IFileUploader fileUploader, IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper, IRoleRepository roleRepository)
+        public AccountApplication(IFileUploader fileUploader, IAccountRepository accountRepository, IPasswordHasher passwordHasher, IAuthHelper authHelper, IRoleRepository roleRepository, ISmsSender smsSender)
         {
             _fileUploader = fileUploader;
             _accountRepository = accountRepository;
             _passwordHasher = passwordHasher;
             _authHelper = authHelper;
             _roleRepository = roleRepository;
+            _smsSender = smsSender;
         }
+
+
+        private readonly IFileUploader _fileUploader;
+        private readonly IAccountRepository _accountRepository;
+        private readonly IPasswordHasher _passwordHasher;
+        private readonly IAuthHelper _authHelper;
+        private readonly IRoleRepository _roleRepository;
+        private readonly ISmsSender _smsSender;
+       
+
+
 
         public OperationResult Edit(EditAccount command)
         {
@@ -67,14 +75,19 @@ namespace AccountManagement.Application
             else
             {
                 var password = _passwordHasher.Hash(command.Password);
+                var codevalidate = CodeGenerator.RandomNumber();
                 var path = $"profilePhotos";
                 var picturePath = _fileUploader.Upload(command.ProfilePhoto, path);
                 var account = new Account(command.Fullname, command.Username, password, command.Mobile, command.RoleId,
-                    picturePath);
+                    picturePath,codevalidate);
+
+             //   _smsSender.SendByKavenagarAsync("کد فعالسازی شما در سایت لوازم خانگی حمید :  " + codevalidate , command.Mobile  );  // in r bayad badan faal konam alan be khatere sharj nabodan gheyre faale
+                
                 _accountRepository.Create(account);
                 _accountRepository.SaveChanges();
-                operation.Succedded("عملیات با موفقیت انجام گردید");
+                operation.Succedded("ثبت نام با موفقیت انجام گردید");
                 return operation;
+
             }
         }
 
@@ -116,19 +129,26 @@ namespace AccountManagement.Application
         {
             var operation = new OperationResult();
             var account = _accountRepository.GetBy(command.Username);
-            var permissions = _roleRepository.Get(account.RoleId).Permissions.Select(x => x.Code).ToList();
-
-            if (account == null) 
+            if (account == null)
             {
-                 operation.Failed(ApplicationMessages.WrongUserOrPass);
+                operation.Failed(ApplicationMessages.WrongUserOrPass);
                 return operation;
             }
+
+
+            var permissions = _roleRepository.Get(account.RoleId).Permissions.Select(x => x.Code).ToList();
 
             (bool Verified, bool NeedsUpgrade) result = _passwordHasher.Check(account.Password,command.Password);
 
             if(!result.Verified)
             {
                  operation.Failed(ApplicationMessages.WrongUserOrPass);
+                return operation;
+            }
+
+            if (account.IsActive != true)
+            {
+                operation.Failed(ApplicationMessages.NotActive);
                 return operation;
             }
 
@@ -161,6 +181,11 @@ namespace AccountManagement.Application
                 Mobile = account.Mobile
 
             };
+        }
+
+        public bool ActiveUser(string activeCode)
+        {
+          return _accountRepository.ActiveUser(activeCode);
         }
     }
 }

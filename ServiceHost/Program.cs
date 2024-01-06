@@ -75,10 +75,10 @@ builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
 builder.Services.AddTransient<ISmsSender, SmsSender>();
 
 
-builder.Services.Configure<CookiePolicyOptions>(options =>
+builder.Services.Configure<CookiePolicyOptions>(x =>
 {
-    options.CheckConsentNeeded = context => true;
-    options.MinimumSameSitePolicy = SameSiteMode.Lax;
+    x.CheckConsentNeeded = context => true;
+    x.MinimumSameSitePolicy = SameSiteMode.Lax;
 });
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)

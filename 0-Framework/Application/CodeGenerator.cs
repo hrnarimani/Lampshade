@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Text;
 
 namespace _0_Framework.Application
 {
-    public class CodeGenerator
+    public static class CodeGenerator
     {
         public static string Generate(string symbol)
         {
@@ -28,10 +29,10 @@ namespace _0_Framework.Application
             return strBuild.ToString();
         }
 
-        private static string RandomNumber()
+        public static string RandomNumber()
         {
             var random = new Random();
-            return random.Next(100, 999).ToString();
+            return random.Next(10000, 99999).ToString();
         }
     }
 }

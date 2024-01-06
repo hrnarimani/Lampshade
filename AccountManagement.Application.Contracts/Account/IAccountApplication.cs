@@ -18,6 +18,8 @@ namespace AccountManagement.Application.Contracts.Account
         void Logout();
         List<AccountViewModel> GetAccounts();
         AccountViewModel GetAccountBy(long id);
+        bool ActiveUser(string activeCode);
+
 
     }
 }

@@ -75,5 +75,24 @@ namespace AccountManagement.Infrastructure.EFCore.Repository
 
             return query.OrderByDescending(x => x.Id).ToList();
         }
+
+        public bool ActiveUser(string activeCode)
+        {
+            var account =
+                _context.Accounts.FirstOrDefault(x => x.IsActive == false && x.CodeValidateMobile == activeCode);
+            if (account != null)
+            {
+                account.ChangeCodeValidateMobile(CodeGenerator.RandomNumber());
+                account.ChangeActiveMode();
+
+                _context.SaveChanges();
+                return true;
+
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

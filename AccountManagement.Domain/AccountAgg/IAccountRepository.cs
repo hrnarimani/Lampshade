@@ -14,6 +14,7 @@ namespace AccountManagement.Domain.AccountAgg
         List<AccountViewModel> Serach(AccountSearchModel searchModel);
         Account GetBy(string username);
         List<AccountViewModel> GetAccounts();
+        bool ActiveUser(string activeCode);
 
     }
 }
