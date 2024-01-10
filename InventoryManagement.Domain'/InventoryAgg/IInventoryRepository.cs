@@ -16,5 +16,8 @@ namespace InventoryManagement.Domain_.InventoryAgg
         List<InventoryViewMOdel> Seearch(InventorySearchModel searchModel);
         Inventory GetBy(long productId);
         List<InventoryOperationViewModel> GetOperationLog(long iventoryId);
+        List<InventoryViewMOdel> GetPrices();
+
+
     }
 }

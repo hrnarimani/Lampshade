@@ -5,6 +5,7 @@ using InventoryManagement.Application.Contract.Inventory;
 using InventoryManagement.Domain.InventoryAgg;
 using InventoryManagement.Domain_.InventoryAgg;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Product;
 using ShopManagement.Infrastructur.EFCore;
 
 namespace InventoryManagement.Infrasructure.EFCore.Repository
@@ -69,6 +70,7 @@ namespace InventoryManagement.Infrasructure.EFCore.Repository
         public Inventory GetBy(long productId)
         {
             return _iventoryContext.Inventory.FirstOrDefault(x => x.ProductId == productId);
+
         }
 
         public List<InventoryOperationViewModel> GetOperationLog(long iventoryId)
@@ -97,7 +99,15 @@ namespace InventoryManagement.Infrasructure.EFCore.Repository
             return operations;
         }
 
+        public List<InventoryViewMOdel> GetPrices()
+        {
+           return   _iventoryContext.Inventory.Select(x => new InventoryViewMOdel()
+            {
+                
+                UnitPrice = x.UnitPrice
 
+            }).ToList();
+        }
     }
 
 

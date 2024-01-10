@@ -139,5 +139,10 @@ namespace InventoryManagement.Application
         {
             return _inventoryRepository.GetOperationLog(iventoryId);
         }
+
+        public List<InventoryViewMOdel> GetPrices()
+        {
+            return _inventoryRepository.GetPrices();
+        }
     }
 }

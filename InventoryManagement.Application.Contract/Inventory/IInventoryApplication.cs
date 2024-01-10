@@ -17,5 +17,7 @@ namespace InventoryManagement.Application.Contract.Inventory
         EditInventory GetDetais(long id);
         List<InventoryViewMOdel> Seearch(InventorySearchModel searchModel);
         List<InventoryOperationViewModel> GetOperationLog(long iventoryId);
+        List<InventoryViewMOdel> GetPrices();
+
     }
 }

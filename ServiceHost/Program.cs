@@ -19,6 +19,7 @@ using CommentManagement.Infrastructure.EF.Core;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using _0_Framework.Infrastructure;
 using System.Collections.Generic;
+using _0_Framework.Application.Email;
 using _0_Framework.Application.Sender.Sms;
 using _0_Framework.Application.ZarinPal;
 using InventoryManagementPresentation.Api;
@@ -73,6 +74,8 @@ builder.Services.AddTransient<IAuthHelper, AuthHelper>();
 builder.Services.AddTransient<IZarinPalFactory, ZarinPalFactory>();
 
 builder.Services.AddTransient<ISmsSender, SmsSender>();
+builder.Services.AddTransient<IEmailService, EmailService>();
+
 
 
 builder.Services.Configure<CookiePolicyOptions>(x =>
